@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="fr" class="h-full bg-gray-50">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tableau de bord Élève — StageAvenir</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="js/supabase.js" defer></script>
+  <script src="js/app.js" defer></script>
+</head>
+<body class="flex flex-col min-h-full">
+
+  <header class="bg-white border-b border-gray-100">
+    <div class="max-w-7xl mx-auto px-4 h-16 flex items-center justify-between">
+      <a href="index.html" class="font-bold text-xl text-gray-900">Stage<span class="text-blue-600">Avenir</span></a>
+      <div id="nav-auth-buttons"></div>
+    </div>
+  </header>
+
+  <main class="max-w-7xl mx-auto px-4 py-8 flex-1 w-full space-y-8">
+    <div class="flex justify-between items-center">
+      <div>
+        <h1 class="text-2xl font-bold text-gray-900">Mon espace candidature</h1>
+        <p class="text-sm text-gray-500">Profil : Élève en 3ème • Collège Victor Hugo</p>
+      </div>
+      <a href="offres.html" class="bg-blue-600 hover:bg-blue-700 text-white font-semibold text-sm px-4 py-2 rounded-lg">Chercher d'autres stages</a>
+    </div>
+
+    <!-- Applications Table -->
+    <div class="bg-white rounded-xl border border-gray-100 overflow-hidden shadow-sm">
+      <div class="p-4 border-b border-gray-100 font-bold text-gray-900">Suivi de mes demandes</div>
+      <div class="overflow-x-auto">
+        <table class="w-full text-left text-sm text-gray-600">
+          <thead class="bg-gray-50 text-xs uppercase font-semibold text-gray-500">
+            <tr>
+              <th class="p-4">Offre / Entreprise</th>
+              <th class="p-4">Date d'envoi</th>
+              <th class="p-4">Statut</th>
+              <th class="p-4">Action</th>
+            </tr>
+          </thead>
+          <tbody class="divide-y divide-gray-100">
+            <tr>
+              <td class="p-4 font-medium text-gray-900">Stage Observation Web <br><span class="text-xs text-gray-400">TechLab Studio</span></td>
+              <td class="p-4">12/09/2026</td>
+              <td class="p-4"><span class="px-2.5 py-1 bg-amber-50 text-amber-700 text-xs font-semibold rounded-full">En cours de lecture</span></td>
+              <td class="p-4"><a href="#" class="text-blue-600 hover:underline">Voir détail</a></td>
+            </tr>
+            <tr>
+              <td class="p-4 font-medium text-gray-900">Assistant Communication <br><span class="text-xs text-gray-400">EcoImpact</span></td>
+              <td class="p-4">05/09/2026</td>
+              <td class="p-4"><span class="px-2.5 py-1 bg-emerald-50 text-emerald-700 text-xs font-semibold rounded-full">Entretien accepté</span></td>
+              <td class="p-4"><a href="#" class="text-blue-600 hover:underline">Répondre</a></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </main>
+</body>
+</html>

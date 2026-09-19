@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="fr" class="h-full bg-gray-50">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Rechercher un stage — StageAvenir</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="js/supabase.js" defer></script>
+  <script src="js/app.js" defer></script>
+</head>
+<body class="flex flex-col min-h-full">
+
+  <!-- Header Navbar -->
+  <header class="bg-white border-b border-gray-100">
+    <div class="max-w-7xl mx-auto px-4 h-16 flex items-center justify-between">
+      <a href="index.html" class="font-bold text-xl text-gray-900">Stage<span class="text-blue-600">Avenir</span></a>
+      <div id="nav-auth-buttons"></div>
+    </div>
+  </header>
+
+  <!-- Main layout -->
+  <main class="max-w-7xl mx-auto px-4 py-8 flex-1 w-full grid grid-cols-1 lg:grid-cols-4 gap-8">
+    
+    <!-- Filtres à gauche -->
+    <aside class="bg-white p-6 rounded-xl border border-gray-100 h-fit space-y-6">
+      <h2 class="font-bold text-gray-900 text-lg">Filtres</h2>
+
+      <div>
+        <label class="block text-xs font-bold text-gray-500 uppercase tracking-wider mb-2">Niveau d'études</label>
+        <div class="space-y-2 text-sm">
+          <label class="flex items-center gap-2"><input type="checkbox" value="3ème" class="filter-grade text-blue-600 rounded"> Collège 3ème</label>
+          <label class="flex items-center gap-2"><input type="checkbox" value="Lycée" class="filter-grade text-blue-600 rounded"> Lycée</label>
+          <label class="flex items-center gap-2"><input type="checkbox" value="BTS / Université" class="filter-grade text-blue-600 rounded"> Supérieur</label>
+        </div>
+      </div>
+
+      <div>
+        <label class="block text-xs font-bold text-gray-500 uppercase tracking-wider mb-2">Secteur d'activité</label>
+        <select id="filter-sector" class="w-full p-2.5 bg-gray-50 border border-gray-200 rounded-lg text-sm">
+          <option value="">Tous les secteurs</option>
+          <option value="Informatique / Numérique">Informatique / Numérique</option>
+          <option value="Marketing / Communication">Marketing / Communication</option>
+          <option value="Design / Art">Design / Art</option>
+        </select>
+      </div>
+
+      <div>
+        <label class="block text-xs font-bold text-gray-500 uppercase tracking-wider mb-2">Gratification</label>
+        <label class="flex items-center gap-2 text-sm">
+          <input type="checkbox" id="filter-rewarded" class="text-blue-600 rounded">
+          Uniquement stages gratifiés
+        </label>
+      </div>
+    </aside>
+
+    <!-- Liste des offres + Carte -->
+    <section class="lg:col-span-3 space-y-6">
+      <!-- Top banner search info -->
+      <div class="bg-white p-4 rounded-xl border border-gray-100 flex items-center justify-between">
+        <p class="text-sm text-gray-600"><span id="results-count" class="font-bold text-gray-900">3</span> stages trouvés</p>
+        <button id="toggle-map-btn" class="text-xs font-semibold bg-gray-100 text-gray-700 px-3 py-1.5 rounded-lg hover:bg-gray-200">Afficher la carte</button>
+      </div>
+
+      <!-- Emplacement Carte interactive Placeholder -->
+      <div id="map-container" class="hidden bg-slate-200 rounded-xl h-64 border border-slate-300 flex items-center justify-center text-gray-500 text-sm font-medium">
+        Carte interactive (Mapbox / Google Maps Integration)
+      </div>
+
+      <!-- Grid Offres -->
+      <div id="offers-list" class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <!-- Rempli par JS -->
+      </div>
+    </section>
+
+  </main>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const container = document.getElementById('offers-list');
+      const countEl = document.getElementById('results-count');
+      const toggleMapBtn = document.getElementById('toggle-map-btn');
+      const mapContainer = document.getElementById('map-container');
+
+      function displayOffers(list) {
+        container.innerHTML = list.map(o => renderOfferCard(o)).join('');
+        countEl.textContent = list.length;
+      }
+
+      displayOffers(MOCK_OFFERS);
+
+      toggleMapBtn.addEventListener('click', () => {
+        mapContainer.classList.toggle('hidden');
+        toggleMapBtn.textContent = mapContainer.classList.contains('hidden') ? 'Afficher la carte' : 'Masquer la carte';
+      });
+    });
+  </script>
+</body>
+</html>

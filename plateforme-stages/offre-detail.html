@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="fr" class="h-full bg-gray-50">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Détail de l'offre — StageAvenir</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="js/supabase.js" defer></script>
+  <script src="js/app.js" defer></script>
+</head>
+<body class="flex flex-col min-h-full">
+
+  <header class="bg-white border-b border-gray-100">
+    <div class="max-w-7xl mx-auto px-4 h-16 flex items-center justify-between">
+      <a href="index.html" class="font-bold text-xl text-gray-900">Stage<span class="text-blue-600">Avenir</span></a>
+      <div id="nav-auth-buttons"></div>
+    </div>
+  </header>
+
+  <main class="max-w-4xl mx-auto px-4 py-10 flex-1 w-full">
+    <a href="offres.html" class="text-sm font-semibold text-blue-600 hover:underline mb-6 inline-block">&larr; Retour aux offres</a>
+
+    <div class="bg-white p-8 rounded-2xl border border-gray-100 shadow-sm space-y-6">
+      <div class="flex justify-between items-start">
+        <div>
+          <span class="px-3 py-1 bg-blue-50 text-blue-700 font-semibold text-xs rounded-full">3ème / Lycée</span>
+          <h1 class="text-3xl font-extrabold text-gray-900 mt-2">Stage d'observation - Découverte du Web</h1>
+          <p class="text-lg text-gray-600 font-medium">TechLab Studio • Lyon (69)</p>
+        </div>
+        <button onclick="openApplyModal()" class="bg-blue-600 hover:bg-blue-700 text-white font-semibold px-6 py-3 rounded-xl shadow transition text-sm">
+          Postuler à cette offre
+        </button>
+      </div>
+
+      <hr class="border-gray-100">
+
+      <div>
+        <h2 class="text-lg font-bold text-gray-900 mb-2">Description du stage</h2>
+        <p class="text-gray-600 leading-relaxed">
+          Nous proposons un stage d'observation d'une semaine pour faire découvrir les coulisses de la création de sites internet et d'applications mobiles. Vous accompagnerez nos équipes de développeurs et designers dans leurs tâches quotidiennes.
+        </p>
+      </div>
+
+      <div>
+        <h2 class="text-lg font-bold text-gray-900 mb-2">Informations pratiques</h2>
+        <ul class="list-disc list-inside text-gray-600 space-y-1 text-sm">
+          <li>Durée : 1 semaine</li>
+          <li>Dates disponibles : Novembre 2026 - Février 2027</li>
+          <li>Gratification : Non (stage d'observation)</li>
+        </ul>
+      </div>
+    </div>
+  </main>
+
+  <!-- Modale Candidature -->
+  <div id="apply-modal" class="fixed inset-0 bg-black/50 backdrop-blur-sm hidden flex items-center justify-center p-4 z-50">
+    <div class="bg-white rounded-2xl p-6 max-w-lg w-full space-y-4 shadow-xl">
+      <h3 class="text-xl font-bold text-gray-900">Postuler à ce stage</h3>
+      <form id="apply-form" class="space-y-4">
+        <div>
+          <label class="block text-sm font-medium text-gray-700 mb-1">Motivations / Court message</label>
+          <textarea rows="4" class="w-full p-3 border border-gray-200 rounded-xl text-sm focus:outline-none focus:border-blue-500" placeholder="Pourquoi souhaites-tu effectuer ce stage dans notre entreprise ?"></textarea>
+        </div>
+        
+        <div class="p-3 bg-blue-50 rounded-xl text-xs text-blue-900 space-y-2">
+          <label class="flex items-start gap-2 cursor-pointer">
+            <input type="checkbox" required class="mt-0.5 rounded text-blue-600">
+            <span><strong>Conformité RGPD / Mineurs :</strong> J'atteste avoir l'accord de mon représentant légal (parent/tuteur) pour soumettre ma candidature.</span>
+          </label>
+        </div>
+
+        <div class="flex justify-end gap-3 pt-2">
+          <button type="button" onclick="closeApplyModal()" class="px-4 py-2 text-sm font-semibold text-gray-600 hover:bg-gray-100 rounded-lg">Annuler</button>
+          <button type="submit" class="px-5 py-2 text-sm font-semibold bg-blue-600 text-white rounded-lg hover:bg-blue-700">Envoyer ma candidature</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <script>
+    function openApplyModal() { document.getElementById('apply-modal').classList.remove('hidden'); }
+    function closeApplyModal() { document.getElementById('apply-modal').classList.add('hidden'); }
+
+    document.getElementById('apply-form').addEventListener('submit', (e) => {
+      e.preventDefault();
+      alert('Votre candidature a été transmise avec succès !');
+      closeApplyModal();
+    });
+  </script>
+</body>
+</html>
